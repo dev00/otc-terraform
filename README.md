@@ -38,7 +38,7 @@ When using AK/SK authentication, please ensure `OS_USER_DOMAIN_NAME` (or `domain
 ## Getting it up and running
 The steps to get this running are rather simple, assuming you have terraform already installed. If not, take a look [here](https://learn.hashicorp.com/terraform/getting-started/install.html). After doing so, simply:
 1. Clone this repo
-2. Create a file `variables.tfvars` (in best cases outside the git folder, and link it afterwards right next to the `tf` files in `os_examples and `otc_examples`), adding the following line: `public_key = <YOUR_PUBLIC_KEY>`, replacing the placeholder with your own SSH public key
+2. Create a file `variables.tfvars` (in best cases outside the git folder, and link it afterwards right next to the `tf` files in `os_examples` and `otc_examples`), adding the following line: `public_key = <YOUR_PUBLIC_KEY>`, replacing the placeholder with your own SSH public key
 3. Choose whether you want to use the Openstack Resource Provider (in that case, go to `os_examples`) or the OpenTelekomCloud Provider (then go to `otc_examples`)
 4. Ensure the correct environment vars are set
 5. Run `terraform init`, `terraform plan` and `terraform apply` - if you create the `variables.tfvars` it will start automatically, otherwise it will ask for your public key.
