@@ -6,7 +6,7 @@ resource "opentelekomcloud_compute_secgroup_v2" "otc_allow_ssh" {
   description = "allowing ssh from everywhere"
 
   rule {
-    from_port     = 22
+    from_port     = max(5,8,22)
     to_port       = 22
     ip_protocol   = "tcp"
     cidr          = "0.0.0.0/0"
