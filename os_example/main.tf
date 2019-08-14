@@ -80,6 +80,6 @@ resource "opentelekomcloud_compute_floatingip_associate_v2" "bastion_eip_assoc" 
 #   find out whether it's possible to generate a full inventory via tf, respecting the groups set via metadata
 #   if not, wait for https://github.com/terraform-providers/terraform-provider-openstack/issues/836 to be fixed
 resource "local_file" "ansible_inventory" {
-  content     = templatefile("ansible_inventory.tpl", { instances="${openstack_compute_instance_v2.test_instances}", bastion_ip="${opentelekomcloud_compute_floatingip_v2.bastion_eip.address}", bastion_user="${var.bastion_user}"})
+  content     = templatefile("ansible_inventory.tpl", { instances="${openstack_compute_instance_v2.test_instances}", bastion = "${openstack_compute_instance_v2.bastion}", bastion_ip="${opentelekomcloud_compute_floatingip_v2.bastion_eip.address}", bastion_user="${var.bastion_user}"})
   filename    = "${var.ansible_inventory}"
 }
