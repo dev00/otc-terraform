@@ -1,7 +1,6 @@
 resource "openstack_networking_network_v2" "os_network_1" {
   name              = "${var.project}-network"
   admin_state_up    = true
-  dns_domain        = "eu-de.compute.internal."
 }
 
 resource "openstack_networking_subnet_v2" "os_subnet_1" {
@@ -25,4 +24,3 @@ resource "openstack_networking_router_interface_v2" "os_router_if" {
   router_id        = "${openstack_networking_router_v2.os_router.id}"
   subnet_id        = "${openstack_networking_subnet_v2.os_subnet_1.id}"
 }
-
