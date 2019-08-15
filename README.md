@@ -55,6 +55,9 @@ Due to some limitations of the Openstack native API, additional variables must c
 ## Dirty hacks used
 As this terraform script hides a lot of complexity not only interacting with the APIs, but also preparing the inventory for Ansible, a bunch of hacks is used.
 
+### Bastion hosts
+This is a setup meant to be used with a bastion host and TcpForwarding via SSH. For that's it's **mandatory** to set `AllowTcpForwarding yes` in your `sshd_conf`. This was added due to the fact the netcat based solution turned out to be rather unstable and extremly slow. If you cant resist, change the Ansible inventory template, but we do **not** recommend it!
+
 ### Key Authentication and Host Keys
 To avoid fiddling around with private keys, we assume you use SSH Agent forwarding, and the private key is added to said Agent. This agent is then tunneled to the bastion host and from there tunneled further to the other instances. For working seamless this needed a bunch of extra arguments in the inventory file, take a look at the `ansible_inventory.tpl`.
 
