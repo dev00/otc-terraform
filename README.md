@@ -48,15 +48,13 @@ The steps to get this running are rather simple, assuming you have terraform alr
 
 ## Openstack provider specific setting
 Due to some limitations of the Openstack native API, additional variables must considered. In our case the following ones:
-- `external_network_id`: The ID of the external network the router will connect and which will be the routers default gateway. This can be optained by issuing `openstack network list` and looking for the network called `admin_external_net`. The default value in this repository will be updated in case it changes, however when additional regions are supported by OTC or multiple external networks are available (and outgoing traffic should be sent into another external network), changing said value is required.
-
-## 
+- `external_network_id`: The ID of the external network the router will connect and which will be the routers default gateway. This can be obtained by issuing `openstack network list` and looking for the network called `admin_external_net`. The default value in this repository will be updated in case it changes, however when additional regions are supported by OTC or multiple external networks are available (and outgoing traffic should be sent into another external network), changing said value is required.
 
 ## Dirty hacks used
 As this terraform script hides a lot of complexity not only interacting with the APIs, but also preparing the inventory for Ansible, a bunch of hacks is used.
 
 ### Bastion hosts
-This is a setup meant to be used with a bastion host and TcpForwarding via SSH. For that's it's **mandatory** to set `AllowTcpForwarding yes` in your `sshd_conf`. This was added due to the fact the netcat based solution turned out to be rather unstable and extremly slow. If you cant resist, change the Ansible inventory template, but we do **not** recommend it!
+This is a setup meant to be used with a bastion host and TcpForwarding via SSH, so it's **mandatory** to set `AllowTcpForwarding yes` in your `sshd_conf`. This was added due to the fact the netcat based solution turned out to be rather unstable and extremly slow. If you cant resist, change the Ansible inventory template, but we do **not** recommend it!
 
 ### Key Authentication and Host Keys
 To avoid fiddling around with private keys, we assume you use SSH Agent forwarding, and the private key is added to said Agent. This agent is then tunneled to the bastion host and from there tunneled further to the other instances. For working seamless this needed a bunch of extra arguments in the inventory file, take a look at the `ansible_inventory.tpl`.
