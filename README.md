@@ -37,7 +37,7 @@ When using AK/SK authentication, please ensure `OS_USER_DOMAIN_NAME` (or `domain
 
 ## Getting it up and running
 The steps to get this running are rather simple, assuming you have terraform already installed. If not, take a look [here](https://learn.hashicorp.com/terraform/getting-started/install.html). After doing so, simply:
-1. Clone this repo
+1. Clone this repo and change into the newly created folder (where e.g. this *README* is located.
 2. Create a file `variables.tfvars` with the following line: `public_key = <YOUR_PUBLIC_KEY>`, replacing the placeholder with your own SSH public key
 3. Ensure the correct environment vars are set or your `clouds.yaml` file is properly set up. A very basic approach is to test whether the Openstack CLI tools work by issuing a command like `openstack server list`
 4. Run `terraform init`, `terraform plan` and `terraform apply` - if you create the `variables.tfvars` it will start automatically, otherwise it will ask for your public key.
