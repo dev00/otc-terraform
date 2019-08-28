@@ -59,4 +59,4 @@ To avoid fiddling around with private keys, we assume you use SSH Agent forwardi
 
 ### openstack provider bug at the network resource
 When creating a network, the OTC sets `dns_domain` by default, even if it was not set by terraform. Running TF again it will try to unset this value as it was not defined in the terraform file. This will then break because the user is not allowed to set said value. This can be avoided by adding `dns_domain="eu-de.compute.internal."` to the vpc resource called *os_network_1* at `os_example/vpc/main` after the initial run.
-This bug was already [reported](https://github.com/terraform-providers/terraform-provider-openstack/issues/836), fixed and is now waiting for merge and release.
+This bug was already [reported](https://github.com/terraform-providers/terraform-provider-openstack/issues/836), fixed and is now waiting for merge and release. Until then, the `opentelekomcloud` provider is used.

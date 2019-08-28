@@ -1,4 +1,4 @@
-resource "openstack_networking_network_v2" "os_network_1" {
+resource "opentelekomcloud_networking_network_v2" "os_network_1" {
   name              = "${var.project}-network"
   admin_state_up    = true
 }
@@ -8,7 +8,7 @@ resource "openstack_networking_subnet_v2" "os_subnet_1" {
   cidr              = "${var.subnet_1_cidr}"
   dns_nameservers   = "${var.dns_servers}"
   gateway_ip        = "${var.subnet_1_gw}"
-  network_id        = "${openstack_networking_network_v2.os_network_1.id}"
+  network_id        = "${opentelekomcloud_networking_network_v2.os_network_1.id}"
 }
 
 resource "openstack_networking_router_v2" "os_router" {
