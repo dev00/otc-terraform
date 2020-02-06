@@ -1,4 +1,9 @@
 provider "openstack" {
+  #coming from the env variables
+}
+
+provider "opentelekomcloud" {
+  #coming from the env variables
 }
 
 resource "openstack_networking_secgroup_v2" "allow_ssh_grp" {
@@ -65,10 +70,6 @@ resource "openstack_compute_instance_v2" "bastion" {
     env           = "bastion"
   }
 }
-
-#resource "opentelekomcloud_compute_floatingip_v2" "bastion_eip" {
-#  pool = "admin_external_net"
-#}
 
 resource "openstack_networking_floatingip_v2" "bastion_eip" {
     pool = "admin_external_net"
